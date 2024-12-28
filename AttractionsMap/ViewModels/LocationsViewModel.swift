@@ -10,12 +10,12 @@ class LocationViewModel: ObservableObject {
     
     //Текущее местоположение на карте
     @Published var mapLocations: Location
-    /*{
+    {
         didSet {
             updateMapRegion(locations: mapLocations)
         }
     }
-     */
+     
     //Это создаёт "пустую" область карты с начальной точкой в центре координат мира (0,0)
     @Published var  mapRegion: MKCoordinateRegion = MKCoordinateRegion()
     
