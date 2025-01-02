@@ -15,9 +15,13 @@ class LocationViewModel: ObservableObject {
             updateMapRegion(locations: mapLocations)
         }
     }
-     
+    
+    //Текущий регион на карте
     //Это создаёт "пустую" область карты с начальной точкой в центре координат мира (0,0)
     @Published var  mapRegion: MKCoordinateRegion = MKCoordinateRegion()
+    
+    //Список местоположений
+    @Published var showLocationsList: Bool = false
     
     //Заранее определим диапазон для карты
     let mapSpan = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
@@ -34,6 +38,12 @@ class LocationViewModel: ObservableObject {
             mapRegion = MKCoordinateRegion(
                 center: locations.coordinates,
                 span: mapSpan)
+        }
+    }
+    
+    func toggleLocationsList() {
+        withAnimation(.easeInOut) {
+            showLocationsList.toggle()
         }
     }
 }
